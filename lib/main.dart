@@ -5,12 +5,14 @@ void main() => runApp(MaterialApp(
 ));
 
 class MyCard extends StatefulWidget {
-
   @override
   _MyCardState createState() => _MyCardState();
 }
 
 class _MyCardState extends State<MyCard> {
+
+  int myLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,15 @@ class _MyCardState extends State<MyCard> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 8.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            myLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.40, 40.0, 30.0, 0.0),
@@ -63,7 +74,7 @@ class _MyCardState extends State<MyCard> {
             ),
             SizedBox(height: 10.0),
             Text(
-              '8',
+              '$myLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
